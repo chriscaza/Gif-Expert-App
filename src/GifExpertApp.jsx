@@ -1,5 +1,6 @@
 import { useState } from "react"
 import { AddCategory } from "./components/AddCategory";
+import { GifGrid } from "./components/GifGrid";
 
 export const GifExpertApp = () => {
 
@@ -12,16 +13,18 @@ export const GifExpertApp = () => {
 
   return (
     <>
-        {/* titulo */}
         <h1>GifExpertApp</h1>
 
-        {/* input */}
         {/* Cuando una función flecha retorna solo el parametro se puede omitir el parametro */}
         {/* Ej: el siguiente método sería así: (event) => onAddCategory(event), es lo mismo */}
         <AddCategory onNewCategory={ onAddCategory }/>
 
-        {/* listado de Gif */}
-        <ol>{ categories.map( category => { return <li key={ category }>{ category }</li> } ) }</ol>
+        { 
+          categories.map( category => 
+            <GifGrid key={ category } category={category}/> 
+          )
+        }
+
     </>
   )
 }
